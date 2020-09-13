@@ -44,7 +44,7 @@ void D3D12HelloWindow::LoadPipeline()
         }
     }
 #endif
-
+    // Create the device
     ComPtr<IDXGIFactory4> factory;
     ThrowIfFailed(CreateDXGIFactory2(dxgiFactoryFlags, IID_PPV_ARGS(&factory)));
 
@@ -105,6 +105,7 @@ void D3D12HelloWindow::LoadPipeline()
     m_frameIndex = m_swapChain->GetCurrentBackBufferIndex();
 
     // Create descriptor heaps.
+    // A descriptor heap can be thought of as an array of descriptors. Where each descriptor fully describes an object to the GPU.
     {
         // Describe and create a render target view (RTV) descriptor heap.
         D3D12_DESCRIPTOR_HEAP_DESC rtvHeapDesc = {};
@@ -135,6 +136,10 @@ void D3D12HelloWindow::LoadPipeline()
 // Load the sample assets.
 void D3D12HelloWindow::LoadAssets()
 {
+    // TODO Compile the shaders
+    // TODO create the vertex input layout
+    // TODO create a pipeline state object description, the create the object
+
     // Create the command list.
     ThrowIfFailed(m_device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, m_commandAllocator.Get(), nullptr, IID_PPV_ARGS(&m_commandList)));
 
@@ -142,7 +147,11 @@ void D3D12HelloWindow::LoadAssets()
     // to record yet. The main loop expects it to be closed, so close it now.
     ThrowIfFailed(m_commandList->Close());
 
-    // Create synchronization objects.
+    //TODO create and load the vertex buffers
+    //TODO create the vertex buffer views
+
+    // Create a fence / synchronization objects
+    // A fence is used to synchronize CPU and GPU
     {
         ThrowIfFailed(m_device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&m_fence)));
         m_fenceValue = 1;
@@ -154,9 +163,12 @@ void D3D12HelloWindow::LoadAssets()
             ThrowIfFailed(HRESULT_FROM_WIN32(GetLastError()));
         }
     }
+    //TODO wait for GPU to finish
 }
 
 // Update frame-based values.
+//Update everything that should change since the last frame.
+//Modify the constant, vertex, index buffers, and everything else, as necessary.
 void D3D12HelloWindow::OnUpdate()
 {
 }
@@ -164,6 +176,7 @@ void D3D12HelloWindow::OnUpdate()
 // Render the scene.
 void D3D12HelloWindow::OnRender()
 {
+
     // Record all the commands we need to render the scene into the command list.
     PopulateCommandList();
 
@@ -174,6 +187,7 @@ void D3D12HelloWindow::OnRender()
     // Present the frame.
     ThrowIfFailed(m_swapChain->Present(1, 0));
 
+    // Wait for GPU to finish
     WaitForPreviousFrame();
 }
 
@@ -181,8 +195,10 @@ void D3D12HelloWindow::OnDestroy()
 {
     // Ensure that the GPU is no longer referencing resources that are about to be
     // cleaned up by the destructor.
+    // Wait for GPU to finish
     WaitForPreviousFrame();
 
+    //Close event handle
     CloseHandle(m_fenceEvent);
 }
 
