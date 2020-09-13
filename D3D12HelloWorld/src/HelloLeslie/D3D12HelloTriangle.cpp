@@ -10,23 +10,23 @@
 //*********************************************************
 
 #include "stdafx.h"
-#include "D3D12HelloWindow.h"
+#include "D3D12HelloTriangle.h"
 
-D3D12HelloWindow::D3D12HelloWindow(UINT width, UINT height, std::wstring name) :
+D3D12HelloTriangle::D3D12HelloTriangle(UINT width, UINT height, std::wstring name) :
     DXSample(width, height, name),
     m_frameIndex(0),
     m_rtvDescriptorSize(0)
 {
 }
 
-void D3D12HelloWindow::OnInit()
+void D3D12HelloTriangle::OnInit()
 {
     LoadPipeline();
     LoadAssets();
 }
 
 // Load the rendering pipeline dependencies.
-void D3D12HelloWindow::LoadPipeline()
+void D3D12HelloTriangle::LoadPipeline()
 {
     UINT dxgiFactoryFlags = 0;
 
@@ -134,7 +134,7 @@ void D3D12HelloWindow::LoadPipeline()
 }
 
 // Load the sample assets.
-void D3D12HelloWindow::LoadAssets()
+void D3D12HelloTriangle::LoadAssets()
 {
     // TODO Compile the shaders
     // TODO create the vertex input layout
@@ -169,12 +169,12 @@ void D3D12HelloWindow::LoadAssets()
 // Update frame-based values.
 //Update everything that should change since the last frame.
 //Modify the constant, vertex, index buffers, and everything else, as necessary.
-void D3D12HelloWindow::OnUpdate()
+void D3D12HelloTriangle::OnUpdate()
 {
 }
 
 // Render the scene.
-void D3D12HelloWindow::OnRender()
+void D3D12HelloTriangle::OnRender()
 {
 
     // Record all the commands we need to render the scene into the command list.
@@ -191,7 +191,7 @@ void D3D12HelloWindow::OnRender()
     WaitForPreviousFrame();
 }
 
-void D3D12HelloWindow::OnDestroy()
+void D3D12HelloTriangle::OnDestroy()
 {
     // Ensure that the GPU is no longer referencing resources that are about to be
     // cleaned up by the destructor.
@@ -202,7 +202,7 @@ void D3D12HelloWindow::OnDestroy()
     CloseHandle(m_fenceEvent);
 }
 
-void D3D12HelloWindow::PopulateCommandList()
+void D3D12HelloTriangle::PopulateCommandList()
 {
     // Command list allocators can only be reset when the associated 
     // command lists have finished execution on the GPU; apps should use 
@@ -229,7 +229,7 @@ void D3D12HelloWindow::PopulateCommandList()
     ThrowIfFailed(m_commandList->Close());
 }
 
-void D3D12HelloWindow::WaitForPreviousFrame()
+void D3D12HelloTriangle::WaitForPreviousFrame()
 {
     // WAITING FOR THE FRAME TO COMPLETE BEFORE CONTINUING IS NOT BEST PRACTICE.
     // This is code implemented as such for simplicity. The D3D12HelloFrameBuffering

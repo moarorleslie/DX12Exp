@@ -20,10 +20,10 @@
 // An example of this can be found in the class method: OnDestroy().
 using Microsoft::WRL::ComPtr;
 
-class D3D12HelloWindow : public DXSample
+class D3D12HelloTriangle : public DXSample
 {
 public:
-    D3D12HelloWindow(UINT width, UINT height, std::wstring name);
+    D3D12HelloTriangle(UINT width, UINT height, std::wstring name);
 
     virtual void OnInit();
     virtual void OnUpdate();
