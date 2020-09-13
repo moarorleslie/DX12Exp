@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "D3D12HelloTriangle", "HelloTriangle\D3D12HelloTriangle.vcxproj", "{5018F6A3-6533-4744-B1FD-727D199FD2E9}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "D3D12HelloTexture", "HelloTexture\D3D12HelloTexture.vcxproj", "{16B13BB4-D82D-4AC1-8B40-C6BCCC99954B}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "D3D12HelloFrameBuffering", "HelloFrameBuffering\D3D12HelloFrameBuffering.vcxproj", "{DF8A573D-FD94-45F8-AED2-0BEFC00B9591}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "D3D12HelloLeslie", "HelloLeslie\D3D12HelloLeslie.vcxproj", "{4E57A7A6-840D-4CBA-8559-9A2F1B8CDBE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,8 +47,15 @@ Global
 		{DF8A573D-FD94-45F8-AED2-0BEFC00B9591}.Debug|x64.Build.0 = Debug|x64
 		{DF8A573D-FD94-45F8-AED2-0BEFC00B9591}.Release|x64.ActiveCfg = Release|x64
 		{DF8A573D-FD94-45F8-AED2-0BEFC00B9591}.Release|x64.Build.0 = Release|x64
+		{4E57A7A6-840D-4CBA-8559-9A2F1B8CDBE9}.Debug|x64.ActiveCfg = Debug|x64
+		{4E57A7A6-840D-4CBA-8559-9A2F1B8CDBE9}.Debug|x64.Build.0 = Debug|x64
+		{4E57A7A6-840D-4CBA-8559-9A2F1B8CDBE9}.Release|x64.ActiveCfg = Release|x64
+		{4E57A7A6-840D-4CBA-8559-9A2F1B8CDBE9}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94F91831-2341-4B61-9C10-2F8612280DEC}
 	EndGlobalSection
 EndGlobal
