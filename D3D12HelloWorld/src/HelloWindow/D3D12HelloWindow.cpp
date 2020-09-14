@@ -12,21 +12,21 @@
 #include "stdafx.h"
 #include "D3D12HelloWindow.h"
 
-D3D12HelloTexture::D3D12HelloTexture(UINT width, UINT height, std::wstring name) :
+D3D12HelloBundles::D3D12HelloBundles(UINT width, UINT height, std::wstring name) :
     DXSample(width, height, name),
     m_frameIndex(0),
     m_rtvDescriptorSize(0)
 {
 }
 
-void D3D12HelloTexture::OnInit()
+void D3D12HelloBundles::OnInit()
 {
     LoadPipeline();
     LoadAssets();
 }
 
 // Load the rendering pipeline dependencies.
-void D3D12HelloTexture::LoadPipeline()
+void D3D12HelloBundles::LoadPipeline()
 {
     UINT dxgiFactoryFlags = 0;
 
@@ -133,7 +133,7 @@ void D3D12HelloTexture::LoadPipeline()
 }
 
 // Load the sample assets.
-void D3D12HelloTexture::LoadAssets()
+void D3D12HelloBundles::LoadAssets()
 {
     // Create the command list.
     ThrowIfFailed(m_device->CreateCommandList(0, D3D12_COMMAND_LIST_TYPE_DIRECT, m_commandAllocator.Get(), nullptr, IID_PPV_ARGS(&m_commandList)));
@@ -157,12 +157,12 @@ void D3D12HelloTexture::LoadAssets()
 }
 
 // Update frame-based values.
-void D3D12HelloTexture::OnUpdate()
+void D3D12HelloBundles::OnUpdate()
 {
 }
 
 // Render the scene.
-void D3D12HelloTexture::OnRender()
+void D3D12HelloBundles::OnRender()
 {
     // Record all the commands we need to render the scene into the command list.
     PopulateCommandList();
@@ -177,7 +177,7 @@ void D3D12HelloTexture::OnRender()
     WaitForPreviousFrame();
 }
 
-void D3D12HelloTexture::OnDestroy()
+void D3D12HelloBundles::OnDestroy()
 {
     // Ensure that the GPU is no longer referencing resources that are about to be
     // cleaned up by the destructor.
@@ -186,7 +186,7 @@ void D3D12HelloTexture::OnDestroy()
     CloseHandle(m_fenceEvent);
 }
 
-void D3D12HelloTexture::PopulateCommandList()
+void D3D12HelloBundles::PopulateCommandList()
 {
     // Command list allocators can only be reset when the associated 
     // command lists have finished execution on the GPU; apps should use 
@@ -213,7 +213,7 @@ void D3D12HelloTexture::PopulateCommandList()
     ThrowIfFailed(m_commandList->Close());
 }
 
-void D3D12HelloTexture::WaitForPreviousFrame()
+void D3D12HelloBundles::WaitForPreviousFrame()
 {
     // WAITING FOR THE FRAME TO COMPLETE BEFORE CONTINUING IS NOT BEST PRACTICE.
     // This is code implemented as such for simplicity. The D3D12HelloFrameBuffering

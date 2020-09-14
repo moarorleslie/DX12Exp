@@ -24,7 +24,7 @@
     <ClInclude Include="Win32Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="D3D12HelloTexture.h">
+    <ClInclude Include="D3D12HelloBundles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClCompile Include="Win32Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="D3D12HelloTexture.cpp">
+    <ClCompile Include="D3D12HelloBundles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
