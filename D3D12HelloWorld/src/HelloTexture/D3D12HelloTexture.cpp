@@ -12,7 +12,7 @@
 #include "stdafx.h"
 #include "D3D12HelloTexture.h"
 
-D3D12HelloConstBuffers::D3D12HelloConstBuffers(UINT width, UINT height, std::wstring name) :
+D3D12HelloFrameBuffering::D3D12HelloFrameBuffering(UINT width, UINT height, std::wstring name) :
     DXSample(width, height, name),
     m_frameIndex(0),
     m_viewport(0.0f, 0.0f, static_cast<float>(width), static_cast<float>(height)),
@@ -21,14 +21,14 @@ D3D12HelloConstBuffers::D3D12HelloConstBuffers(UINT width, UINT height, std::wst
 {
 }
 
-void D3D12HelloConstBuffers::OnInit()
+void D3D12HelloFrameBuffering::OnInit()
 {
     LoadPipeline();
     LoadAssets();
 }
 
 // Load the rendering pipeline dependencies.
-void D3D12HelloConstBuffers::LoadPipeline()
+void D3D12HelloFrameBuffering::LoadPipeline()
 {
     UINT dxgiFactoryFlags = 0;
 
@@ -142,7 +142,7 @@ void D3D12HelloConstBuffers::LoadPipeline()
 }
 
 // Load the sample assets.
-void D3D12HelloConstBuffers::LoadAssets()
+void D3D12HelloFrameBuffering::LoadAssets()
 {
     // Create the root signature.
     {
@@ -351,7 +351,7 @@ void D3D12HelloConstBuffers::LoadAssets()
 }
 
 // Generate a simple black and white checkerboard texture.
-std::vector<UINT8> D3D12HelloConstBuffers::GenerateTextureData()
+std::vector<UINT8> D3D12HelloFrameBuffering::GenerateTextureData()
 {
     const UINT rowPitch = TextureWidth * TexturePixelSize;
     const UINT cellPitch = rowPitch >> 3;        // The width of a cell in the checkboard texture.
@@ -388,12 +388,12 @@ std::vector<UINT8> D3D12HelloConstBuffers::GenerateTextureData()
 }
 
 // Update frame-based values.
-void D3D12HelloConstBuffers::OnUpdate()
+void D3D12HelloFrameBuffering::OnUpdate()
 {
 }
 
 // Render the scene.
-void D3D12HelloConstBuffers::OnRender()
+void D3D12HelloFrameBuffering::OnRender()
 {
     // Record all the commands we need to render the scene into the command list.
     PopulateCommandList();
@@ -408,7 +408,7 @@ void D3D12HelloConstBuffers::OnRender()
     WaitForPreviousFrame();
 }
 
-void D3D12HelloConstBuffers::OnDestroy()
+void D3D12HelloFrameBuffering::OnDestroy()
 {
     // Ensure that the GPU is no longer referencing resources that are about to be
     // cleaned up by the destructor.
@@ -417,7 +417,7 @@ void D3D12HelloConstBuffers::OnDestroy()
     CloseHandle(m_fenceEvent);
 }
 
-void D3D12HelloConstBuffers::PopulateCommandList()
+void D3D12HelloFrameBuffering::PopulateCommandList()
 {
     // Command list allocators can only be reset when the associated 
     // command lists have finished execution on the GPU; apps should use 
@@ -458,7 +458,7 @@ void D3D12HelloConstBuffers::PopulateCommandList()
     ThrowIfFailed(m_commandList->Close());
 }
 
-void D3D12HelloConstBuffers::WaitForPreviousFrame()
+void D3D12HelloFrameBuffering::WaitForPreviousFrame()
 {
     // WAITING FOR THE FRAME TO COMPLETE BEFORE CONTINUING IS NOT BEST PRACTICE.
     // This is code implemented as such for simplicity. The D3D12HelloFrameBuffering

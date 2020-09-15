@@ -12,7 +12,7 @@
 #include "stdafx.h"
 #include "D3D12HelloBundles.h"
 
-D3D12HelloConstBuffers::D3D12HelloConstBuffers(UINT width, UINT height, std::wstring name) :
+D3D12HelloFrameBuffering::D3D12HelloFrameBuffering(UINT width, UINT height, std::wstring name) :
     DXSample(width, height, name),
     m_frameIndex(0),
     m_viewport(0.0f, 0.0f, static_cast<float>(width), static_cast<float>(height)),
@@ -21,14 +21,14 @@ D3D12HelloConstBuffers::D3D12HelloConstBuffers(UINT width, UINT height, std::wst
 {
 }
 
-void D3D12HelloConstBuffers::OnInit()
+void D3D12HelloFrameBuffering::OnInit()
 {
     LoadPipeline();
     LoadAssets();
 }
 
 // Load the rendering pipeline dependencies.
-void D3D12HelloConstBuffers::LoadPipeline()
+void D3D12HelloFrameBuffering::LoadPipeline()
 {
     UINT dxgiFactoryFlags = 0;
 
@@ -136,7 +136,7 @@ void D3D12HelloConstBuffers::LoadPipeline()
 }
 
 // Load the sample assets.
-void D3D12HelloConstBuffers::LoadAssets()
+void D3D12HelloFrameBuffering::LoadAssets()
 {
     // Create an empty root signature.
     {
@@ -263,12 +263,12 @@ void D3D12HelloConstBuffers::LoadAssets()
 }
 
 // Update frame-based values.
-void D3D12HelloConstBuffers::OnUpdate()
+void D3D12HelloFrameBuffering::OnUpdate()
 {
 }
 
 // Render the scene.
-void D3D12HelloConstBuffers::OnRender()
+void D3D12HelloFrameBuffering::OnRender()
 {
     // Record all the commands we need to render the scene into the command list.
     PopulateCommandList();
@@ -283,7 +283,7 @@ void D3D12HelloConstBuffers::OnRender()
     WaitForPreviousFrame();
 }
 
-void D3D12HelloConstBuffers::OnDestroy()
+void D3D12HelloFrameBuffering::OnDestroy()
 {
     // Ensure that the GPU is no longer referencing resources that are about to be
     // cleaned up by the destructor.
@@ -292,7 +292,7 @@ void D3D12HelloConstBuffers::OnDestroy()
     CloseHandle(m_fenceEvent);
 }
 
-void D3D12HelloConstBuffers::PopulateCommandList()
+void D3D12HelloFrameBuffering::PopulateCommandList()
 {
     // Command list allocators can only be reset when the associated 
     // command lists have finished execution on the GPU; apps should use 
@@ -328,7 +328,7 @@ void D3D12HelloConstBuffers::PopulateCommandList()
     ThrowIfFailed(m_commandList->Close());
 }
 
-void D3D12HelloConstBuffers::WaitForPreviousFrame()
+void D3D12HelloFrameBuffering::WaitForPreviousFrame()
 {
     // WAITING FOR THE FRAME TO COMPLETE BEFORE CONTINUING IS NOT BEST PRACTICE.
     // This is code implemented as such for simplicity. The D3D12HelloFrameBuffering
