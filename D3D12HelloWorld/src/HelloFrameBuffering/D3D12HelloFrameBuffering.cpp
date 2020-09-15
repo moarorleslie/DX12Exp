@@ -12,7 +12,7 @@
 #include "stdafx.h"
 #include "D3D12HelloFrameBuffering.h"
 
-D3D12HelloFrameBuffering::D3D12HelloFrameBuffering(UINT width, UINT height, std::wstring name) :
+D3D12HelloLeslie::D3D12HelloLeslie(UINT width, UINT height, std::wstring name) :
     DXSample(width, height, name),
     m_frameIndex(0),
     m_viewport(0.0f, 0.0f, static_cast<float>(width), static_cast<float>(height)),
@@ -22,14 +22,14 @@ D3D12HelloFrameBuffering::D3D12HelloFrameBuffering(UINT width, UINT height, std:
 {
 }
 
-void D3D12HelloFrameBuffering::OnInit()
+void D3D12HelloLeslie::OnInit()
 {
     LoadPipeline();
     LoadAssets();
 }
 
 // Load the rendering pipeline dependencies.
-void D3D12HelloFrameBuffering::LoadPipeline()
+void D3D12HelloLeslie::LoadPipeline()
 {
     UINT dxgiFactoryFlags = 0;
 
@@ -136,7 +136,7 @@ void D3D12HelloFrameBuffering::LoadPipeline()
 }
 
 // Load the sample assets.
-void D3D12HelloFrameBuffering::LoadAssets()
+void D3D12HelloLeslie::LoadAssets()
 {
     // Create an empty root signature.
     {
@@ -253,12 +253,12 @@ void D3D12HelloFrameBuffering::LoadAssets()
 }
 
 // Update frame-based values.
-void D3D12HelloFrameBuffering::OnUpdate()
+void D3D12HelloLeslie::OnUpdate()
 {
 }
 
 // Render the scene.
-void D3D12HelloFrameBuffering::OnRender()
+void D3D12HelloLeslie::OnRender()
 {
     // Record all the commands we need to render the scene into the command list.
     PopulateCommandList();
@@ -273,7 +273,7 @@ void D3D12HelloFrameBuffering::OnRender()
     MoveToNextFrame();
 }
 
-void D3D12HelloFrameBuffering::OnDestroy()
+void D3D12HelloLeslie::OnDestroy()
 {
     // Ensure that the GPU is no longer referencing resources that are about to be
     // cleaned up by the destructor.
@@ -282,7 +282,7 @@ void D3D12HelloFrameBuffering::OnDestroy()
     CloseHandle(m_fenceEvent);
 }
 
-void D3D12HelloFrameBuffering::PopulateCommandList()
+void D3D12HelloLeslie::PopulateCommandList()
 {
     // Command list allocators can only be reset when the associated 
     // command lists have finished execution on the GPU; apps should use 
@@ -319,7 +319,7 @@ void D3D12HelloFrameBuffering::PopulateCommandList()
 }
 
 // Wait for pending GPU work to complete.
-void D3D12HelloFrameBuffering::WaitForGpu()
+void D3D12HelloLeslie::WaitForGpu()
 {
     // Schedule a Signal command in the queue.
     ThrowIfFailed(m_commandQueue->Signal(m_fence.Get(), m_fenceValues[m_frameIndex]));
@@ -333,7 +333,7 @@ void D3D12HelloFrameBuffering::WaitForGpu()
 }
 
 // Prepare to render the next frame.
-void D3D12HelloFrameBuffering::MoveToNextFrame()
+void D3D12HelloLeslie::MoveToNextFrame()
 {
     // Schedule a Signal command in the queue.
     const UINT64 currentFenceValue = m_fenceValues[m_frameIndex];

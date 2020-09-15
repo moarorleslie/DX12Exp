@@ -12,7 +12,7 @@
 #include "stdafx.h"
 #include "D3D12HelloConstBuffers.h"
 
-D3D12HelloFrameBuffering::D3D12HelloFrameBuffering(UINT width, UINT height, std::wstring name) :
+D3D12HelloLeslie::D3D12HelloLeslie(UINT width, UINT height, std::wstring name) :
     DXSample(width, height, name),
     m_frameIndex(0),
     m_pCbvDataBegin(nullptr),
@@ -23,14 +23,14 @@ D3D12HelloFrameBuffering::D3D12HelloFrameBuffering(UINT width, UINT height, std:
 {
 }
 
-void D3D12HelloFrameBuffering::OnInit()
+void D3D12HelloLeslie::OnInit()
 {
     LoadPipeline();
     LoadAssets();
 }
 
 // Load the rendering pipeline dependencies.
-void D3D12HelloFrameBuffering::LoadPipeline()
+void D3D12HelloLeslie::LoadPipeline()
 {
     UINT dxgiFactoryFlags = 0;
 
@@ -146,7 +146,7 @@ void D3D12HelloFrameBuffering::LoadPipeline()
 }
 
 // Load the sample assets.
-void D3D12HelloFrameBuffering::LoadAssets()
+void D3D12HelloLeslie::LoadAssets()
 {
     // Create a root signature consisting of a descriptor table with a single CBV.
     {
@@ -313,7 +313,7 @@ void D3D12HelloFrameBuffering::LoadAssets()
 }
 
 // Update frame-based values.
-void D3D12HelloFrameBuffering::OnUpdate()
+void D3D12HelloLeslie::OnUpdate()
 {
     const float translationSpeed = 0.005f;
     const float offsetBounds = 1.25f;
@@ -327,7 +327,7 @@ void D3D12HelloFrameBuffering::OnUpdate()
 }
 
 // Render the scene.
-void D3D12HelloFrameBuffering::OnRender()
+void D3D12HelloLeslie::OnRender()
 {
     // Record all the commands we need to render the scene into the command list.
     PopulateCommandList();
@@ -342,7 +342,7 @@ void D3D12HelloFrameBuffering::OnRender()
     WaitForPreviousFrame();
 }
 
-void D3D12HelloFrameBuffering::OnDestroy()
+void D3D12HelloLeslie::OnDestroy()
 {
     // Ensure that the GPU is no longer referencing resources that are about to be
     // cleaned up by the destructor.
@@ -352,7 +352,7 @@ void D3D12HelloFrameBuffering::OnDestroy()
 }
 
 // Fill the command list with all the render commands and dependent state.
-void D3D12HelloFrameBuffering::PopulateCommandList()
+void D3D12HelloLeslie::PopulateCommandList()
 {
     // Command list allocators can only be reset when the associated 
     // command lists have finished execution on the GPU; apps should use 
@@ -393,7 +393,7 @@ void D3D12HelloFrameBuffering::PopulateCommandList()
     ThrowIfFailed(m_commandList->Close());
 }
 
-void D3D12HelloFrameBuffering::WaitForPreviousFrame()
+void D3D12HelloLeslie::WaitForPreviousFrame()
 {
     // WAITING FOR THE FRAME TO COMPLETE BEFORE CONTINUING IS NOT BEST PRACTICE.
     // This is code implemented as such for simplicity. The D3D12HelloFrameBuffering

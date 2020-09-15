@@ -10,11 +10,11 @@
 //*********************************************************
 
 #include "stdafx.h"
-#include "D3D12HelloFrameBuffering.h"
+#include "D3D12HelloLeslie.h"
 
 _Use_decl_annotations_
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR, int nCmdShow)
 {
-    D3D12HelloFrameBuffering sample(1280, 720, L"D3D12 Hello Rawr");
+    D3D12HelloLeslie sample(1280, 720, L"D3D12 Hello Rawr");
     return Win32Application::Run(&sample, hInstance, nCmdShow);
 }
