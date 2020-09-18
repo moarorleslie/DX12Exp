@@ -108,7 +108,7 @@
       </Message>
     </PreLinkEvent>
     <PreBuildEvent>
-      <Command>mkdir $(ProjectDir)\obj\$(Platform)\$(Configuration)\CompiledShaders</Command>
+      <Command>if not exist $(ProjectDir)\obj\$(Platform)\$(Configuration)\CompiledShaders mkdir $(ProjectDir)\obj\$(Platform)\$(Configuration)\CompiledShaders</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>
