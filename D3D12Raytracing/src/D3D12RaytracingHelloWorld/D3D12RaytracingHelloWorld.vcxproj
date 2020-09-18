@@ -108,8 +108,7 @@
       </Message>
     </PreLinkEvent>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>mkdir $(ProjectDir)\obj\$(Platform)\$(Configuration)\CompiledShaders</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>
