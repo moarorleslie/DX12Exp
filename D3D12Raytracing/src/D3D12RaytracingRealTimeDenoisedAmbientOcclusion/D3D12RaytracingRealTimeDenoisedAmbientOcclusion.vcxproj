@@ -19,7 +19,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>D3D12Raytracing</RootNamespace>
     <ProjectName>D3D12RaytracingRealTimeDenoisedAmbientOcclusion</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -95,7 +95,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir);util;util/Graphics;util/Misc;util/PBRTParser;$(IntDir);SampleCore;SampleCore\PBRTParser;RTAO;SampleCore\util;..\..\..\..\..\Libraries\D3DX12\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);util;util/Graphics;util/Misc;util/PBRTParser;$(IntDir);SampleCore;SampleCore\PBRTParser;RTAO;SampleCore\util;$(SolutionDir)..\..\Libraries\D3DX12\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAsWinRT>false</CompileAsWinRT>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
@@ -136,8 +136,7 @@
       </Message>
     </PreLinkEvent>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>if not exist $(ProjectDir)\obj\$(Platform)\$(Configuration)\CompiledShaders mkdir $(ProjectDir)\obj\$(Platform)\$(Configuration)\CompiledShaders</Command>
     </PreBuildEvent>
     <PreBuildEvent>
       <Message>
