@@ -56,6 +56,14 @@ void D3D12RaytracingHelloWorld::OnInit()
     CreateWindowSizeDependentResources();
 }
 
+void D3D12RaytracingHelloWorld::CheckRaytracingSupport() {
+    D3D12_FEATURE_DATA_D3D12_OPTIONS5 options5 = {};
+    ThrowIfFailed(m_dxrDevice->CheckFeatureSupport(D3D12_FEATURE_D3D12_OPTIONS5,
+        &options5, sizeof(options5)));
+    if (options5.RaytracingTier < D3D12_RAYTRACING_TIER_1_0)
+        throw std::runtime_error("Raytracing not supported on device");
+}
+
 // Create resources that depend on the device.
 void D3D12RaytracingHelloWorld::CreateDeviceDependentResources()
 {
@@ -129,6 +137,8 @@ void D3D12RaytracingHelloWorld::CreateRaytracingInterfaces()
 
     ThrowIfFailed(device->QueryInterface(IID_PPV_ARGS(&m_dxrDevice)), L"Couldn't get DirectX Raytracing interface for the device.\n");
     ThrowIfFailed(commandList->QueryInterface(IID_PPV_ARGS(&m_dxrCommandList)), L"Couldn't get DirectX Raytracing interface for the command list.\n");
+
+   // CheckRaytracingSupport();
 }
 
 // Local root signature and shader association

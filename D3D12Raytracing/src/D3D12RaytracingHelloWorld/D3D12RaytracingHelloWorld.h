@@ -46,7 +46,7 @@ public:
     virtual void OnSizeChanged(UINT width, UINT height, bool minimized);
     virtual void OnDestroy();
     virtual IDXGISwapChain* GetSwapchain() { return m_deviceResources->GetSwapChain(); }
-
+    void CheckRaytracingSupport();
 private:
 
     static const UINT FrameCount = 3;
