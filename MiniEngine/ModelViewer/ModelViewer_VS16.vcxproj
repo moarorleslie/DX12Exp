@@ -183,6 +183,9 @@
       <AdditionalDependencies>zlibstatic.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalOptions>/nodefaultlib:LIBCMT %(AdditionalOptions)</AdditionalOptions>
     </Link>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">if not exist $(SolutionDir)..\Build_VS16\$(Platform)\$(Configuration)\Output\$(ProjectName)\CompiledShaders mkdir $(SolutionDir)..\Build_VS16\$(Platform)\$(Configuration)\Output\$(ProjectName)\CompiledShaders</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ImportGroup Label="ExtensionTargets">
     <Import Project="..\..\Packages\WinPixEventRuntime.1.0.181206001\build\WinPixEventRuntime.targets" Condition="Exists('..\..\Packages\WinPixEventRuntime.1.0.181206001\build\WinPixEventRuntime.targets')" />
